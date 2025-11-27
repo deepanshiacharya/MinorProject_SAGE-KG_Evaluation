@@ -6,7 +6,6 @@ SAGE-KG uses small open-source LLMs (Qwen2.5 series) and a three-stage agentic w
 It includes a powerful retrieval module—Enhanced Graph Traversal (EGT)—and a grounded answer generator that significantly improves multi-hop QA performance.
 
 # Key Features
-
 Agentic KG Construction
 Three specialized agents—Fact Extractor, Schema Planner, Triplet Creator—work together to produce precise and complete triplets.
 
@@ -63,46 +62,9 @@ evidence tracing
 
 cross-encoder reranking for relevance
 
-# Architecture
- ┌──────────────────────────────┐
- │      Agentic Pipeline        │
- └──────────────────────────────┘
-            │
-            ▼
-  ┌───────────────────┐
-  │ Fact Extractor    │
-  └───────────────────┘
-            │
-            ▼
-  ┌───────────────────┐
-  │ Schema Planner    │
-  └───────────────────┘
-            │
-            ▼
-  ┌───────────────────┐
-  │ Triplet Creator   │
-  └───────────────────┘
-            │
-            ▼
-         Knowledge Graph
-            │
-            ▼
- ┌──────────────────────────────┐
- │  Enhanced Graph Traversal    │
- └──────────────────────────────┘
-    │    │     │        │
-    │ Dense  BM25    Multi-hop
-    │ Match  Match   Traversal
-    └────────────────────────→ Reasoning Paths
-            ▼
-  Cross-Encoder Reranking
-            ▼
-   LLM Answer Generation
 
 # Datasets
-
 We use 500 samples each from:
-
 Dataset	Purpose
 HotpotQA	Sentence-level multi-hop QA
 MuSiQue	Compositional multi-step QA
@@ -110,68 +72,45 @@ MuSiQue	Compositional multi-step QA
 MINE	Manually verified factual benchmark
 # Baselines
 Triplet Extractors
-
 Stanford OpenIE
-
 Zero-Shot GraphRAG (Qwen2.5-14B)
-
 KGGen (GPT-4o supervised workflow)
 
-Retrieval & QA Systems
-
+# Retrieval & QA Systems
 Standard RAG (BGE-large)
-
 Microsoft GraphRAG (Local & Global)
-
 Think-on-Graph v1
-
 SAGE-KG (EGT)
 
 # Intrinsic Evaluation
-
 Evaluated using GPT-4o-mini and Gemini 2.0 Flash as independent judges.
-
 Metrics:
-
 Precision (P)
-
 Recall (R)
-
 F1 (harmonic mean)
 
 Key highlight:
-
 SAGE-KG-14B achieves F1 ≈ 8.85–8.90, outperforming all unsupervised baselines and rivaling supervised KGGen.
 
 # Extrinsic Evaluation
-
 Metrics:
-
 Exact Match (EM)
-
 Semantic Relevance (SR)
-
 Generation Evaluation
 (Completeness, Accuracy, Knowledgeability, Relevance, Coherence)
 
-SAGE-KG-14B is the best-performing model across HotpotQA, MuSiQue, and 2WikiMultiHopQA.
+# SAGE-KG-14B is the best-performing model across HotpotQA, MuSiQue, and 2WikiMultiHopQA.
 
 It beats:
-
 Microsoft GraphRAG
-
 Standard RAG
-
 KGGen
-
 Zero-shot GraphRAG
 
 Judge Agreement
 
 Quadratic weighted Cohen’s Kappa:
-
 0.9355 (HotpotQA & 2Wiki)
-
 0.8773 (MuSiQue)
 
 This indicates excellent inter-judge consistency.
