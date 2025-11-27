@@ -103,3 +103,8 @@ Zero-shot GraphRAG	47.80
 OpenIE	29.84
 
 SAGE-KG sets a new state-of-the-art for factual completeness and correctness in unsupervised KG extraction.
+
+
+## Work submitted by 
+202418012 Yashraj Chudasama
+202418015 Deepanshi Acharya
